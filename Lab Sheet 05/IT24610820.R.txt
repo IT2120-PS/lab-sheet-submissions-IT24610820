@@ -1,0 +1,32 @@
+getwd()
+setwd("C:\\Users\\it24610820\\Desktop\\IT24610820")
+
+Delivery_Times <- read.table("Exercise - Lab 05.txt", header = TRUE, sep = ",")
+Delivery_Times
+
+
+fix(Delivery_Times)
+
+names(Delivery_Times) <- c("x1")
+fix(Delivery_Times)
+
+attach(Delivery_Times)
+
+histogram <-hist(x1,main="Histogram of Delivery Timess", 
+                 breaks = seq(20,70,length=8),right = FALSE)
+
+
+
+# The distribution appears to be right-skewed (positively skewed).
+
+freq <- histogram$counts
+breaks <- histogram$breaks
+cum_freq <- cumsum(freq)
+
+# Plot cumulative frequency polygon
+plot(breaks[-1], cum_freq, type = "l", 
+     main = "Cumulative Frequency Polygon (Ogive)",
+     xlab = "Delivery Time",
+     ylab = "Cumulative Frequency",
+     col = "blue", lwd = 2)
+
